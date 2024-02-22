@@ -6,11 +6,16 @@
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "start": "next start",
-    "seed": "node -r dotenv/config ./scripts/seed.js"
+    "seed": "node -r dotenv/config ./scripts/seed.js",
+    "prisma:seed": "ts-node prisma/seed.ts",
+    "migrate:deploy": "npx prisma migrate deploy",
+    "migrate:dev": "npx prisma migrate dev",
+    "generate": "npx prisma generate"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.0.18",
+    "@prisma/client": "^5.10.2",
     "@radix-ui/react-avatar": "^1.0.4",
     "@tailwindcss/forms": "^0.5.7",
     "@types/node": "20.5.7",
@@ -38,7 +43,9 @@
     "eslint-config-next": "^14.0.0",
     "eslint-config-prettier": "9.0.0",
     "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "0.5.4"
+    "prettier-plugin-tailwindcss": "0.5.4",
+    "prisma": "^5.10.2",
+    "ts-node": "^10.9.2"
   },
   "engines": {
     "node": ">=18.17.0"
