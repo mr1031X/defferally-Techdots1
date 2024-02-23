@@ -1,6 +1,6 @@
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import styles from '@/app/ui/home.module.css';
+import styles from '@/src/app/ui/home.module.css';
 import { roboto } from '@/src/app/ui/fonts';
 import DeferAllyLogo from '@/src/app/ui/deferallyLogo';
 <div className={styles.shape} />;
