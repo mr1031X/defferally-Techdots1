@@ -6,7 +6,7 @@ import { ILogin, IRegister } from '../interfaces/user';
 
 export const registerUser = async (payload: IRegister) => {
   try {
-    const { name, email, password, phone, company, role } = payload;
+    const { email, password } = payload;
 
     const existingUser = await prisma.user.findUnique({
       where: {
@@ -21,7 +21,10 @@ export const registerUser = async (payload: IRegister) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const createdUser = await prisma.user.create({
-      data: { name, email, password: hashedPassword, phone, company, role },
+      data: {
+        ...payload,
+        password: hashedPassword,
+      },
     });
 
     const token = jwt.sign(
@@ -31,7 +34,7 @@ export const registerUser = async (payload: IRegister) => {
     );
 
     return {
-      userId: createdUser.id,
+      user: createdUser,
       token,
       message: 'User registered successfully',
     };
@@ -65,7 +68,7 @@ export const loginUser = async (payload: ILogin) => {
     );
 
     return {
-      userId: user.id,
+      user: user,
       token,
       message: 'User is successfully loggedIn',
     };
@@ -101,13 +104,16 @@ export const getUserById = async (userId: string) => {
 
 export const updateUserById = async (payload: User) => {
   try {
-    const { id: userId, name, email, phone, company, role, password } = payload;
+    const { id: userId, password } = payload;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const updatedUser = await prisma.user.update({
       where: { id: userId },
-      data: { name, email, phone, company, role, password: hashedPassword },
+      data: {
+        ...payload,
+        password: hashedPassword,
+      },
     });
 
     return updatedUser;
