@@ -6,12 +6,16 @@ export async function POST(req: NextRequest) {
   try {
     const reqBody: ILogin = await req.json();
 
-    const response = await loginUser(reqBody);
+    const data = await loginUser(reqBody);
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
-      response,
+      data,
     });
+
+    response.cookies.set('access_token', data.token as string, { httpOnly: true });
+
+    return response;
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 500 });
   }

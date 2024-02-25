@@ -102,9 +102,9 @@ export const getUserById = async (userId: string) => {
   }
 };
 
-export const updateUserById = async (payload: User) => {
+export const updateUserById = async (userId: string, payload: User) => {
   try {
-    const { id: userId, password } = payload;
+    const { password } = payload;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
