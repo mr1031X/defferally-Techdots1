@@ -1,9 +1,9 @@
 'use client';
 import { useForm } from "react-hook-form";
-import Button from '@/components/Buttons/button';
-import Input from '@/components/Input';
+import Button from '@/src/components/Buttons/button';
+import Input from '@/src/components/Input';
 import React, { useState } from 'react'
-import { UserPasswordInputs } from "@/interfaces/users/index";
+import { UserPasswordInputs } from "@/src/interfaces/users/index";
 import forwardArrow from '@/public/forwardArrow.svg'
 
 interface SignUpPasswordProps {

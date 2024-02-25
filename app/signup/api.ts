@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IUserSignUpResponse } from "@/interfaces/requests/user";
+import { IUserSignUpResponse } from "@/src/interfaces/requests/user";
 
 interface ErrorResponse {
     error: string;

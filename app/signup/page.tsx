@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from '@/components/Navbar/navbar';
+import NavBar from '@/src/components/Navbar/navbar';
 import { toast, ToastContainer } from 'react-toastify';
 import Role from './SignUpSteps/userRole';
-import Loader from '@/components/Loader';
+import Loader from '@/src/components/Loader';
 import UserInfo from './SignUpSteps/userInfo';
 import UserPassword from './SignUpSteps/userPassword';
 import { useDispatch } from 'react-redux';
-import { setUserAndToken } from '@/redux/Slices/authSlice';
-import { IUserSignUpPayload } from '@/interfaces/requests/user';
+import { setUserAndToken } from '@/src/redux/Slices/authSlice';
+import { IUserSignUpPayload } from '@/src/interfaces/requests/user';
 import { usePost } from './api';
 
 export default function SignUp() {

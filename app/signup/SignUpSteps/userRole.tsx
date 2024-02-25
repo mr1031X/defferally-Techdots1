@@ -1,10 +1,10 @@
 'use client';
 
-import Radio from '@/components/Radio'
-import Button from '@/components/Buttons/button';
+import Radio from '@/src/components/Radio'
+import Button from '@/src/components/Buttons/button';
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
-import { UserRoleInputs } from "@/interfaces/users/index";
+import { UserRoleInputs } from "@/src/interfaces/users/index";
 import forwardArrow from '@/public/forwardArrow.svg'
 interface SignUpInfoProps {
     onSubmit: (data: object, step: number) => void;
