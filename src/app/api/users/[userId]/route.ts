@@ -1,12 +1,14 @@
 import { getDataFromToken } from '@/src/helpers/decode-token';
-import { getUserById, updateUserById } from '@/src/services/user';
+import { UserService } from '@/src/services/user';
 import { User } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
+
+const userService = new UserService();
 
 export async function GET(req: NextRequest) {
   try {
     const userId = await getDataFromToken(req);
-    const data = await getUserById(userId);
+    const data = await userService.getUserById(userId);
 
     const response = NextResponse.json({
       success: true,
@@ -24,7 +26,7 @@ export async function PUT(req: NextRequest) {
     const userId = await getDataFromToken(req);
 
     const reqPayload: User = await req.json();
-    const data = await updateUserById(userId, reqPayload);
+    const data = await userService.updateUserById(userId, reqPayload);
 
     const response = NextResponse.json({
       success: true,

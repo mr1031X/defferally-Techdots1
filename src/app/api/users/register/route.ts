@@ -1,12 +1,14 @@
 import { IRegister } from '@/src/interfaces/user';
-import { registerUser } from '@/src/services/user';
 import { NextRequest, NextResponse } from 'next/server';
+import { UserService } from '@/src/services/user';
+
+const userService = new UserService();
 
 export async function POST(req: NextRequest) {
   try {
     const reqBody: IRegister = await req.json();
 
-    const data = await registerUser(reqBody);
+    const data = await userService.registerUser(reqBody);
 
     const response = NextResponse.json({
       success: true,

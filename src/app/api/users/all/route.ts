@@ -1,11 +1,13 @@
 import { getDataFromToken } from '@/src/helpers/decode-token';
-import { getUsers } from '@/src/services/user';
+import { UserService } from '@/src/services/user';
 import { NextRequest, NextResponse } from 'next/server';
+
+const userService = new UserService();
 
 export async function GET(req: NextRequest) {
   try {
     const userId = await getDataFromToken(req);
-    const data = await getUsers();
+    const data = await userService.getUsers();
 
     const response = NextResponse.json({
       success: true,
