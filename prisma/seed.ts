@@ -3,7 +3,9 @@ import { users } from './placeholder-data';
 import prisma from './index';
 import bcrypt from 'bcrypt';
 
-async function uploadUsers(users: User[]) {
+type UserWithoutTimestamps = Omit<User, 'createdAt' | 'updatedAt'>;
+
+async function uploadUsers(users: UserWithoutTimestamps[]) {
   for (const user of users) {
     const hashedPassword = await bcrypt.hash(user.password, 10);
     await prisma.user.create({

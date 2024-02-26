@@ -1,4 +1,3 @@
-// schema.prisma
 
 generator client {
   provider = "prisma-client-js"
@@ -6,8 +5,8 @@ generator client {
 
 datasource db {
   provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 enum UserRole {
@@ -20,12 +19,120 @@ enum UserRole {
   OTHER
 }
 
+enum PropertyType {
+  RELINQUISHED_PROPERTY
+  REPLACEMENT_PROPERTY
+}
+
+enum ExchangeStatus {
+  ACTIVE
+  COMPLETED
+}
+
+enum DocumentType {
+  RELINQUISHED_PROPERTY_SALE_AGREEMENT
+  EXCHANGE_AGREEMENT
+  TITLE_DEED_DOCUMENTS
+  CLOSING_STATEMENT
+  NOTICE_OF_INTENT
+}
+
+enum PartyType {
+  EXCHANGER
+  QUALIFIED_INTERMEDIARY
+  BUYER
+  SELLER
+  CLOSING_AGENT
+  LENDER
+  ATTORNEY
+  ACCOUNTANT
+  ESCROW_AGENT
+}
+
+enum StepType {
+  CONTRACT_EXCHANGE_DOCUMENTS
+  SETTLEMENT_OF_RELINQUISHED_PROPERTY
+  ID_PERIOD_45_DAY
+  CONTRACT_ON_REPLACEMENT_PROPERTY
+  SETTLEMENT_ON_REPLACEMENT_PROPERTY
+  REPORTING_EXCHANGE_TO_IRS
+}
+
 model User {
-  id       String   @id @unique @default(uuid())
-  name     String
-  email    String   @unique
-  password String
-  phone    String?
-  company  String?
-  role     UserRole @default(OTHER)
+  id         Int         @id @default(autoincrement())
+  uuid       String      @unique @default(uuid())
+  name       String
+  email      String      @unique
+  password   String
+  phone      String?
+  company    String?
+  role       UserRole    @default(OTHER)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime?   @updatedAt
+  
+  // Defining relationships
+  exchanges  Exchange[]
+}
+
+model Exchange {
+  id           Int         @id @default(autoincrement())
+  uuid         String      @unique @default(uuid())
+  type         PropertyType
+  stepNumber   Int
+  status       ExchangeStatus
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime?   @updatedAt
+  completedAt  DateTime?
+  
+  // Defining relationships
+  documents    Document[]
+  parties      Party[]
+  steps        Step[]
+  
+  // User relationship
+  userId       Int
+  user         User        @relation(fields: [userId], references: [id])
+}
+
+model Document {
+  id         Int         @id @default(autoincrement())
+  uuid       String      @unique @default(uuid())
+  type       DocumentType
+  url        String      // Assuming S3-link is a string
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime?   @updatedAt
+  
+  // Defining relationships
+  exchange   Exchange    @relation(fields: [exchangeId], references: [id])
+  exchangeId Int
+}
+
+model Party {
+  id         Int         @id @default(autoincrement())
+  uuid       String      @unique @default(uuid())
+  type       PartyType
+  firstName  String
+  lastName   String
+  email      String
+  phone      String
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime?   @updatedAt
+
+  // Defining relationships
+  exchange   Exchange    @relation(fields: [exchangeId], references: [id])
+  exchangeId Int
+}
+
+model Step {
+  id           Int         @id @default(autoincrement())
+  uuid         String      @unique @default(uuid())
+  type         StepType
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime?   @updatedAt
+  completedAt  DateTime?
+  isEnabled    Boolean
+
+  // Defining relationships
+  exchange     Exchange    @relation(fields: [exchangeId], references: [id])
+  exchangeId   Int
 }

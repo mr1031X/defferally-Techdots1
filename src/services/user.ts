@@ -87,7 +87,7 @@ export class UserService {
     }
   }
 
-  async getUserById(userId: string) {
+  async getUserById(userId: number) {
     try {
       const user = await prisma.user.findUnique({
         where: { id: userId },
@@ -103,7 +103,7 @@ export class UserService {
     }
   }
 
-  async updateUserById(userId: string, payload: User) {
+  async updateUserById(userId: number, payload: User) {
     try {
       const { password } = payload;
 
