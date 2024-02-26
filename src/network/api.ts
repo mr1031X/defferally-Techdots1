@@ -1,4 +1,4 @@
-import apiClient from '@/network/client'
+import apiClient from '@/src/network/client'
 import { AxiosHeaders, AxiosResponse } from 'axios'
 
 const API_BASE_URL = process.env.REACT_APP_API_URL

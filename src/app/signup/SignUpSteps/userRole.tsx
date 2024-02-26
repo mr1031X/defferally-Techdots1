@@ -1,10 +1,9 @@
 'use client';
-
 import Radio from '@/src/components/Radio'
 import Button from '@/src/components/Buttons/button';
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
-import { UserRoleInputs } from "@/src/interfaces/users/index";
+import { UserRoleInputs } from "@/src/interfaces/user";
 import forwardArrow from '@/public/forwardArrow.svg'
 interface SignUpInfoProps {
     onSubmit: (data: object, step: number) => void;
@@ -13,7 +12,6 @@ interface SignUpInfoProps {
 
 export default function Role({ onSubmit, loading }: SignUpInfoProps) {
     const {
-        register,
         handleSubmit,
         formState: { errors },
     } = useForm<UserRoleInputs>();
@@ -21,9 +19,9 @@ export default function Role({ onSubmit, loading }: SignUpInfoProps) {
     const [selectedOption, setSelectedOption] = useState<string>('');
 
     const handleOptionChange = (value: string) => {
+        console.log("=== value =====",value);
         setSelectedOption(value);
     };
-
     return (
         <form onSubmit={handleSubmit((data: UserRoleInputs) =>
             onSubmit(data, 1),

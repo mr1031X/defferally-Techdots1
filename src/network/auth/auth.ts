@@ -1,12 +1,12 @@
-import { useGetQuery, useMutate } from '@/network/requestProcessor'
-import apiClient from '@/network/client'
+import { useGetQuery, useMutate } from '@/src/network/requestProcessor'
+import apiClient from '@/src/network/client'
 import { AxiosResponse } from 'axios'
 import {
   IUserSignInPayload,
   IUserSignInResponse,
   IUserSignUpPayload,
   IUserSignUpResponse
-} from '@/src/interfaces/requests/user/index'
+} from '../../interfaces/requests/user/index'
 
 const endpoints = {
   signUp: '/register',
