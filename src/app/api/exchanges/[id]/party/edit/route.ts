@@ -4,11 +4,16 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const exchangeService = new ExchangeService();
 
-export async function GET(req: NextRequest) {
+export async function PUT(req: NextRequest) {
   try {
     const userId = await getDataFromToken(req);
-    const id = parseInt(req.url.split('/')[2]);
-    const data = await exchangeService.getExchangeById(id);
+    const exchangeId = parseInt(req.url.split('/')[2]);
+    const { partyId, updatedPartyData } = await req.json();
+    const data = await exchangeService.editPartyOfExchange(
+      exchangeId,
+      partyId,
+      updatedPartyData,
+    );
 
     const response = NextResponse.json({
       success: true,

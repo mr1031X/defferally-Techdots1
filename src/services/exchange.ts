@@ -8,12 +8,12 @@ import {
   Step,
   DocumentType,
 } from '@prisma/client';
-type PartyWithoutIds = Omit<
+type PartyWithoutId = Omit<
   Party,
   'id' | 'uuid' | 'exchangeId' | 'createdAt' | 'updatedAt'
 >;
 
-type StepWithoutIds = Omit<
+type StepWithoutId = Omit<
   Step,
   'id' | 'uuid' | 'exchangeId' | 'createdAt' | 'updatedAt' | 'completedAt'
 >;
@@ -24,8 +24,8 @@ export class ExchangeService {
   async createExchange(
     userId: number,
     type: PropertyType,
-    parties: PartyWithoutIds[],
-    steps: StepWithoutIds[],
+    parties: PartyWithoutId[],
+    steps: StepWithoutId[],
     pdfFiles: PdfFile[],
   ): Promise<Exchange | null> {
     try {
@@ -80,7 +80,7 @@ export class ExchangeService {
       return updatedExchange;
     } catch (error) {
       console.error('Error creating exchange:', error);
-      throw new Error('Error creating exchange');
+      throw { message: 'Internal Server Error', error };
     }
   }
 
@@ -101,7 +101,7 @@ export class ExchangeService {
       return exchanges;
     } catch (error) {
       console.error('Error fetching exchanges:', error);
-      throw new Error('Error fetching exchanges');
+      throw { message: 'Internal Server Error', error };
     }
   }
 
@@ -122,13 +122,13 @@ export class ExchangeService {
       return exchange;
     } catch (error) {
       console.error(`Error fetching exchange with id ${exchangeId}:`, error);
-      throw new Error(`Error fetching exchange with id ${exchangeId}`);
+      throw { message: 'Internal Server Error', error };
     }
   }
 
   async addPartyToExchange(
     exchangeId: number,
-    newParty: PartyWithoutIds,
+    newParty: PartyWithoutId,
   ): Promise<Exchange | null> {
     try {
       // Fetch the existing exchange to ensure it exists
@@ -168,7 +168,7 @@ export class ExchangeService {
         `Error adding party to exchange with id ${exchangeId}:`,
         error,
       );
-      throw new Error(`Error adding party to exchange with id ${exchangeId}`);
+      throw { message: 'Internal Server Error', error };
     }
   }
 
@@ -218,9 +218,7 @@ export class ExchangeService {
         `Error editing party with id ${partyId} of exchange with id ${exchangeId}:`,
         error,
       );
-      throw new Error(
-        `Error editing party with id ${partyId} of exchange with id ${exchangeId}`,
-      );
+      throw { message: 'Internal Server Error', error };
     }
   }
 
@@ -266,9 +264,7 @@ export class ExchangeService {
         `Error removing party with id ${partyIdToRemove} from exchange with id ${exchangeId}:`,
         error,
       );
-      throw new Error(
-        `Error removing party with id ${partyIdToRemove} from exchange with id ${exchangeId}`,
-      );
+      throw { message: 'Internal Server Error', error };
     }
   }
 
@@ -320,9 +316,7 @@ export class ExchangeService {
         `Error toggling is_enabled for step with id ${stepId} of exchange with id ${exchangeId}:`,
         error,
       );
-      throw new Error(
-        `Error toggling is_enabled for step with id ${stepId} of exchange with id ${exchangeId}`,
-      );
+      throw { message: 'Internal Server Error', error };
     }
   }
 
@@ -371,13 +365,11 @@ export class ExchangeService {
         `Error adding document to exchange with id ${exchangeId}:`,
         error,
       );
-      throw new Error(
-        `Error adding document to exchange with id ${exchangeId}`,
-      );
+      throw { message: 'Internal Server Error', error };
     }
   }
 
-  async deleteDocumentFromExchange(
+  async removeDocumentFromExchange(
     exchangeId: number,
     documentId: number,
   ): Promise<Exchange | null> {
@@ -417,9 +409,7 @@ export class ExchangeService {
         `Error deleting document with id ${documentId} from exchange with id ${exchangeId}:`,
         error,
       );
-      throw new Error(
-        `Error deleting document with id ${documentId} from exchange with id ${exchangeId}`,
-      );
+      throw { message: 'Internal Server Error', error };
     }
   }
 }
