@@ -1,32 +1,20 @@
 import prisma from '@/prisma';
 import { savePdfFileToLocalPath } from '@/src/helpers/upload-document';
+import { Exchange, ExchangeStatus, PropertyType } from '@prisma/client';
 import {
-  Exchange,
-  ExchangeStatus,
-  Party,
-  PropertyType,
-  Step,
-  DocumentType,
-} from '@prisma/client';
-type PartyWithoutId = Omit<
-  Party,
-  'id' | 'uuid' | 'exchangeId' | 'createdAt' | 'updatedAt'
->;
-
-type StepWithoutId = Omit<
-  Step,
-  'id' | 'uuid' | 'exchangeId' | 'createdAt' | 'updatedAt' | 'completedAt'
->;
-
-type PdfFile = { type: DocumentType; file: Buffer };
+  AddDocument,
+  AddParty,
+  AddStep,
+  EditParty,
+} from '@/src/interfaces/request/exchange';
 
 export class ExchangeService {
   async createExchange(
     userId: number,
     type: PropertyType,
-    parties: PartyWithoutId[],
-    steps: StepWithoutId[],
-    pdfFiles: PdfFile[],
+    parties: AddParty[],
+    steps: AddStep[],
+    pdfFiles: AddDocument[],
   ): Promise<Exchange | null> {
     try {
       const exchange = await prisma.exchange.create({
@@ -128,7 +116,7 @@ export class ExchangeService {
 
   async addPartyToExchange(
     exchangeId: number,
-    newParty: PartyWithoutId,
+    newParty: AddParty,
   ): Promise<Exchange | null> {
     try {
       // Fetch the existing exchange to ensure it exists
@@ -139,7 +127,7 @@ export class ExchangeService {
       });
 
       if (!existingExchange) {
-        throw new Error(`Exchange with id ${exchangeId} not found`);
+        throw { message: `Exchange with id ${exchangeId} not found` };
       }
 
       // Add the new party to the exchange
@@ -174,8 +162,7 @@ export class ExchangeService {
 
   async editPartyOfExchange(
     exchangeId: number,
-    partyId: number,
-    updatedPartyData: PartyWithoutId,
+    payload: EditParty,
   ): Promise<Exchange | null> {
     try {
       // Fetch the existing exchange to ensure it exists
@@ -186,9 +173,10 @@ export class ExchangeService {
       });
 
       if (!existingExchange) {
-        throw new Error(`Exchange with id ${exchangeId} not found`);
+        throw { message: `Exchange with id ${exchangeId} not found` };
       }
 
+      const { partyId, ...updatedPartyData } = payload;
       // Edit the party of the exchange
       const updatedExchange = await prisma.exchange.update({
         where: {
@@ -215,7 +203,7 @@ export class ExchangeService {
       return updatedExchange;
     } catch (error) {
       console.error(
-        `Error editing party with id ${partyId} of exchange with id ${exchangeId}:`,
+        `Error editing party of exchange with id ${exchangeId}:`,
         error,
       );
       throw { message: 'Internal Server Error', error };
@@ -235,7 +223,7 @@ export class ExchangeService {
       });
 
       if (!existingExchange) {
-        throw new Error(`Exchange with id ${exchangeId} not found`);
+        throw { message: `Exchange with id ${exchangeId} not found` };
       }
 
       // Delete the party from the exchange
@@ -282,7 +270,7 @@ export class ExchangeService {
       });
 
       if (!existingExchange) {
-        throw new Error(`Exchange with id ${exchangeId} not found`);
+        throw { message: `Exchange with id ${exchangeId} not found` };
       }
 
       // Toggle the is_enabled flag for the step of the exchange
@@ -322,7 +310,7 @@ export class ExchangeService {
 
   async addDocumentToExchange(
     exchangeId: number,
-    pdfFile: PdfFile,
+    pdfFile: AddDocument,
   ): Promise<Exchange | null> {
     try {
       const existingExchange = await prisma.exchange.findUnique({
@@ -332,7 +320,7 @@ export class ExchangeService {
       });
 
       if (!existingExchange) {
-        throw new Error(`Exchange with id ${exchangeId} not found`);
+        throw { message: `Exchange with id ${exchangeId} not found` };
       }
 
       const updatedExchange = await prisma.exchange.update({
@@ -381,7 +369,7 @@ export class ExchangeService {
       });
 
       if (!existingExchange) {
-        throw new Error(`Exchange with id ${exchangeId} not found`);
+        throw { message: `Exchange with id ${exchangeId} not found` };
       }
 
       const updatedExchange = await prisma.exchange.update({

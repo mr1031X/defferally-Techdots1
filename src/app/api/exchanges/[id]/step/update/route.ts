@@ -1,4 +1,5 @@
 import { getDataFromToken } from '@/src/helpers/decode-token';
+import { ToggleStep } from '@/src/interfaces/request/exchange';
 import { ExchangeService } from '@/src/services/exchange';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -10,7 +11,9 @@ export async function PUT(req: NextRequest) {
     const match = req.url.match(/\/exchanges\/(\d+)/);
 
     const exchangeId = match ? parseInt(match[1]) : 0;
-    const { stepId, isEnabled } = await req.json();
+    const reqPayload: ToggleStep = await req.json();
+
+    const { stepId, isEnabled } = reqPayload;
 
     const data = await exchangeService.toggleStepEnabledForExchange(
       exchangeId,

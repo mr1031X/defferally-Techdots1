@@ -1,4 +1,5 @@
 import { getDataFromToken } from '@/src/helpers/decode-token';
+import { RemoveDocument } from '@/src/interfaces/request/exchange';
 import { ExchangeService } from '@/src/services/exchange';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -11,7 +12,10 @@ export async function DELETE(req: NextRequest) {
     const match = req.url.match(/\/exchanges\/(\d+)/);
     const exchangeId = match ? parseInt(match[1]) : 0;
 
-    const { documentId } = await req.json();
+    const reqPayload: RemoveDocument = await req.json();
+
+    const { documentId } = reqPayload;
+
     const data = await exchangeService.removeDocumentFromExchange(
       exchangeId,
       documentId,

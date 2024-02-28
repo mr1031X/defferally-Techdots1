@@ -1,4 +1,5 @@
 import { getDataFromToken } from '@/src/helpers/decode-token';
+import { AddParty } from '@/src/interfaces/request/exchange';
 import { ExchangeService } from '@/src/services/exchange';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -10,7 +11,7 @@ export async function PUT(req: NextRequest) {
     const match = req.url.match(/\/exchanges\/(\d+)/);
 
     const exchangeId = match ? parseInt(match[1]) : 0;
-    const newParty = await req.json();
+    const newParty: AddParty = await req.json();
     const data = await exchangeService.addPartyToExchange(exchangeId, newParty);
 
     const response = NextResponse.json({

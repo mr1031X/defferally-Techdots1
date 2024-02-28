@@ -2,10 +2,10 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { User } from '@prisma/client';
 import prisma from '@/prisma';
-import { ILogin, IRegister } from '../interfaces/user';
+import { Login, Register, UpdateUser } from '@/src/interfaces/request/user';
 
 export class UserService {
-  async registerUser(payload: IRegister) {
+  async registerUser(payload: Register) {
     try {
       const { email, password } = payload;
 
@@ -44,7 +44,7 @@ export class UserService {
     }
   }
 
-  async loginUser(payload: ILogin) {
+  async loginUser(payload: Login) {
     try {
       const { email, password } = payload;
 
@@ -78,7 +78,7 @@ export class UserService {
     }
   }
 
-  async getUsers() {
+  async getUsers(): Promise<User[]> {
     try {
       const users = await prisma.user.findMany();
       return users;
@@ -87,7 +87,7 @@ export class UserService {
     }
   }
 
-  async getUserById(userId: number) {
+  async getUserById(userId: number): Promise<User> {
     try {
       const user = await prisma.user.findUnique({
         where: { id: userId },
@@ -103,17 +103,19 @@ export class UserService {
     }
   }
 
-  async updateUserById(userId: number, payload: User) {
+  async updateUserById(userId: number, payload: UpdateUser): Promise<User> {
     try {
-      const { password } = payload;
+      const { password = '' } = payload;
 
-      const hashedPassword = await bcrypt.hash(password, 10);
+      if (password) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        payload.password = hashedPassword;
+      }
 
       const updatedUser = await prisma.user.update({
         where: { id: userId },
         data: {
           ...payload,
-          password: hashedPassword,
         },
       });
 

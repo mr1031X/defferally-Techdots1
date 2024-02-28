@@ -1,4 +1,5 @@
 import { getDataFromToken } from '@/src/helpers/decode-token';
+import { RemoveParty } from '@/src/interfaces/request/exchange';
 import { ExchangeService } from '@/src/services/exchange';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -11,7 +12,10 @@ export async function DELETE(req: NextRequest) {
 
     const exchangeId = match ? parseInt(match[1]) : 0;
     
-    const { partyId } = await req.json();
+    const reqPayload: RemoveParty = await req.json();
+
+    const { partyId } = reqPayload;
+
     const data = await exchangeService.removePartyFromExchange(
       exchangeId,
       partyId,

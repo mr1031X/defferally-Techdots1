@@ -1,4 +1,5 @@
 import { getDataFromToken } from '@/src/helpers/decode-token';
+import { CreateExchange } from '@/src/interfaces/request/exchange';
 import { ExchangeService } from '@/src/services/exchange';
 import { DocumentType } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
@@ -9,7 +10,9 @@ export async function POST(req: NextRequest) {
   try {
     await getDataFromToken(req);
 
-    const { userId, type, parties, steps, pdfFiles } = await req.json();
+    const reqPayload: CreateExchange = await req.json();
+
+    const { userId, type, parties, steps, pdfFiles } = reqPayload;
 
     console.log(userId, type, parties, steps, pdfFiles);
 
@@ -29,7 +32,7 @@ export async function POST(req: NextRequest) {
       type,
       parties,
       steps,
-      pdfFiles,
+      processedPdfFiles,
     );
 
     const response = NextResponse.json({

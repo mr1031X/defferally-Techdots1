@@ -1,4 +1,5 @@
 import { getDataFromToken } from '@/src/helpers/decode-token';
+import { EditParty } from '@/src/interfaces/request/exchange';
 import { ExchangeService } from '@/src/services/exchange';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -11,12 +12,11 @@ export async function PUT(req: NextRequest) {
 
     const exchangeId = match ? parseInt(match[1]) : 0;
 
-    const { partyId, ...updatedPartyData } = await req.json();
+    const reqPayload: EditParty = await req.json();
 
     const data = await exchangeService.editPartyOfExchange(
       exchangeId,
-      partyId,
-      updatedPartyData,
+      reqPayload,
     );
 
     const response = NextResponse.json({
