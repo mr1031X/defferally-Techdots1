@@ -1,7 +1,7 @@
 import React, { createContext, useContext, ReactNode, useState } from 'react'
-import { IUserSignInResponse } from '@/src/interfaces/requests/user/index'
+import { IUserSignInResponse } from '@/src/interfaces/user'
 import { AxiosResponse } from 'axios'
-import { User } from '@/src/interfaces/index'
+import { User } from '@/src/interfaces/user'
 
 interface AuthContextProps {
   isAuthenticated: boolean | undefined

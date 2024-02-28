@@ -6,7 +6,7 @@ import Role from './SignUpSteps/userRole';
 import Loader from '@/src/components/Loader';
 import UserInfo from './SignUpSteps/userInfo';
 import UserPassword from './SignUpSteps/userPassword';
-import { IUserSignUpPayload } from '@/src/interfaces/requests/user';
+import { IUserSignUpPayload } from '@/src/interfaces/user';
 
 export default function SignUp() {
   const [step, setStep] = useState<number>(0);
