@@ -4,15 +4,15 @@ import Input from '@/src/components/Input';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Select from '@/src/components/Selector';
-interface ProfileProps {
-  updateHideNav: (value: boolean) => void; // Callback function prop
-}
+
+
 const Role = [
   { value: 1, label: 'Qualified intermediate' },
   { value: 2, label: 'Bachelors' },
   { value: 3, label: 'Masters' },
 ];
-export default function Profile({ updateHideNav }: ProfileProps) {
+
+export default function Profile() {
   const {
     register,
     handleSubmit,
@@ -21,14 +21,6 @@ export default function Profile({ updateHideNav }: ProfileProps) {
   } = useForm();
   const [loading, setLoading] = useState<boolean>(false);
   const [, setShowPassword] = useState<boolean>(false);
-
-  // Call the callback function to update hideNav
-  useEffect(() => {
-    updateHideNav(true); // Update hideNav to true
-    return () => {
-      updateHideNav(false); // Reset hideNav when component unmounts
-    };
-  }, [updateHideNav]);
 
   const onSubmit = async (data: any) => {};
   const handleCategoryChange = (selectedCategory: number) => {

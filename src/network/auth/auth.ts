@@ -6,7 +6,7 @@ import {
   IUserSignInResponse,
   IUserSignUpPayload,
   IUserSignUpResponse
-} from '../../interfaces/requests/user/index'
+} from '../../interfaces/user'
 
 const endpoints = {
   signUp: '/register',

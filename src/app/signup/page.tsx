@@ -6,7 +6,7 @@ import Role from './SignUpSteps/userRole';
 import Loader from '@/src/components/Loader';
 import UserInfo from './SignUpSteps/userInfo';
 import UserPassword from './SignUpSteps/userPassword';
-import { IUserSignUpPayload } from '@/src/interfaces/requests/user';
+import { IUserSignUpPayload } from '@/src/interfaces/user';
 
 export default function SignUp() {
   const [step, setStep] = useState<number>(0);
@@ -53,8 +53,8 @@ export default function SignUp() {
                 Register
               </h1>
               {
-                step === 0 ?
-                  <Role onSubmit={onSubmit} loading={loading} /> : step === 1 ?
+                step === 1 ?
+                  <Role onSubmit={onSubmit} loading={loading} /> : step === 2 ?
                     <UserInfo onSubmit={onSubmit} loading={loading} /> :
                     <UserPassword onSubmit={onSubmit} loading={loading} />
               }
