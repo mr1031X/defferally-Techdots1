@@ -11,9 +11,9 @@ export default function TopNav({ hideNav }: { hideNav?: boolean }) {
   return (
     <>
       {compName[0] !== 'profile' && (
-        <div className="flex h-28 items-center justify-between bg-white px-5">
+        <div className="flex h-20 items-center justify-between bg-white px-5">
           <div>
-            {pathname.includes('create') ? (
+            {pathname.includes('create') || pathname.includes('edit') ? (
               <svg
                 viewBox="0 0 24 24"
                 fill="currentColor"

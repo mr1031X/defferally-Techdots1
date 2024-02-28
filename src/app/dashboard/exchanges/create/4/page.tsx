@@ -1,6 +1,5 @@
 import Button from '@/src/components/Buttons/button';
 import Link from 'next/link';
-import forwardArrow from '@/public/forwardArrow.svg';
 
 export default function Page() {
   return (
@@ -90,9 +89,8 @@ export default function Page() {
           <Link href="/dashboard/exchanges/create/4">
             <Button
               type="submit"
-              text="Next Step"
+              text="Start my exchange"
               className="mt-2"
-              iconAfter={forwardArrow}
             />{' '}
           </Link>
         </div>

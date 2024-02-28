@@ -43,7 +43,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     localStorage.setItem('user', JSON.stringify(responseData.user))
     localStorage.setItem('user_id', `${responseData.user.id}`)
     localStorage.setItem('access_token', token)
-    // localStorage.setItem('refresh_token', responseData.headers.authorization);
     setIsAuthenticated(true)
     setUser(responseData.user)
     setToken(token)

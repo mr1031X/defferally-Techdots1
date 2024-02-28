@@ -3,7 +3,7 @@ import { roboto } from '@/src/app/ui/fonts';
 import React from "react";
 
 export const metadata = {
-  title: "1031Demo",
+  title: "Defferally",
   description: "Generated with love by DeferAlly",
 };
 
