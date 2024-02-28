@@ -1,83 +1,42 @@
-import { fetchExchanges } from '@/src/app/lib/data';
-import ExchangeStatus from '@/src/app/ui/exchanges/status';
+import { formatDate } from '@/src/helpers/dateFormat';
 
-export default async function ExchangeTable() {
-    const exchanges = await fetchExchanges();
-    return (
-        <div className="mt-6 flow-root">
-            <div className="inline-block min-w-full align-middle">
-                <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
-                    <div className="md:hidden">
-                        {exchanges?.map((exchange) => (
-                            <div
-                                key={exchange.exchange_id}
-                                className="mb-2 w-full rounded-md bg-white p-4"
-                            >
-                                <div className="flex items-center justify-between border-b pb-4">
-                                    <div>
-                                        <div className="mb-2 flex items-center">
-                                            <p>Exchange #{exchange.exchange_id}</p>
-                                        </div>
-                                    </div>
+const exchanges = [
+  {
+    exchange_id: 1,
+    start_date: '2024-02-01',
+    end_date: '2024-02-15',
+    status: 'active',
+  },
+  {
+    exchange_id: 2,
+    start_date: '2024-01-15',
+    end_date: '2024-02-28',
+    status: 'completed',
+  },
+  {
+    exchange_id: 3,
+    start_date: '2024-03-01',
+    end_date: '2024-03-15',
+    status: 'completed',
+  },
+];
 
-                                </div>
-                                <div className="flex w-full items-center justify-between pt-4">
-                                    <div>
-                                        <p className="text-xl font-medium">
-                                            {exchange.start_date}
-                                        </p>
-                                        <p>{exchange.end_date}</p>
-                                    </div>
-                                    <div className="flex justify-end gap-2">
-                                        <ExchangeStatus status={exchange.status} />
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <table className="hidden min-w-full text-gray-900 md:table">
-                        <thead className="rounded-lg text-left text-sm font-normal">
-                            <tr>
-                                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                                    Exchange
-                                </th>
-                                <th scope="col" className="px-3 py-5 font-medium">
-                                    Start Date
-                                </th>
-                                <th scope="col" className="px-3 py-5 font-medium">
-                                    End Date
-                                </th>
-                                <th scope="col" className="px-3 py-5 font-medium">
-                                    Status
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody className="bg-white">
-                            {exchanges?.map((exchange) => (
-                                <tr
-                                    key={exchange.exchange_id}
-                                    className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
-                                >
-                                    <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                        <div className="flex items-center gap-3">
-                                            <p>Exchange #{exchange.exchange_id}</p>
-                                        </div>
-                                    </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
-                                        {exchange.start_date}
-                                    </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
-                                        {exchange.end_date}
-                                    </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
-                                        <ExchangeStatus status={exchange.status} />
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+export default async function ExchangeTable({ exchangeStatus }: { exchangeStatus: string }) {
+  return (
+    <div className="mt-6 flow-root">
+      <div className="inline-block min-w-full align-middle">
+        {exchanges?.map((values, index) => (
+          <div className="mb-5 flex items-center justify-between rounded-lg bg-gray-100 px-3 py-5" key={values.exchange_id}>
+            <div className="font-semibold">Exchange #{values.exchange_id}</div>
+            <div>
+                <span className="font-thin mr-4">
+              Start date: {formatDate(values.start_date)}
+                </span>
+              <span className='font-semibold bg-white rounded-3xl px-4 py-3'>{exchangeStatus === 'active' ? `Step #2` : 'Completed'}</span>
             </div>
-        </div>
-    );
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

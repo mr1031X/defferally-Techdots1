@@ -50,8 +50,7 @@ export default function Input({
         // Call the callback function with the new visibility state
         showPassword(isVisible)
     }
-console.log("======== isVisible =========", isVisible);
-
+    
     return (
         <div>
             {

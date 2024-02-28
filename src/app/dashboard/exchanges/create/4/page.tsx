@@ -1,64 +1,102 @@
-import Link from "next/link";
+import Button from '@/src/components/Buttons/button';
+import Link from 'next/link';
+import forwardArrow from '@/public/forwardArrow.svg';
 
 export default function Page() {
-    return (
-        <div className="w-full">
-            <div className="flex w-full items-center justify-start p-6">
-                <button className="rounded-md border-solid border-2 p-2">Step 4/4</button>
-            </div>
-            <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl font-semibold mb-6">Steps</h2>
-                <div className="space-y-4">
-                    <div>
-                        <h3 className="text-lg font-medium">Step 1</h3>
-                        <p className="text-sm text-gray-600">Approximate duration: Aug 6, 2023 — Sep 12, 2023</p>
-                        <p>Contract and exchange documents</p>
-                        <hr className="border-t border-gray-300 my-4" />
-                    </div>
-                    <div>
-                        <h3 className="text-lg font-medium">Step 2</h3>
-                        <p className="text-sm text-gray-600">Approximate duration: Aug 6, 2023 — Sep 12, 2023</p>
-                        <p>Settlement of relinquished property</p>
-                        <hr className="border-t border-gray-300 my-4" />
-                    </div>
-                    <div>
-                        <h3 className="text-lg font-medium">Step 3</h3>
-                        <p className="text-sm text-gray-600">Approximate duration: Aug 6, 2023 — Sep 12, 2023</p>
-                        <p>45-Day ID period</p>
-                        <hr className="border-t border-gray-300 my-4" />
-                    </div>
-                    <div>
-                        <h3 className="text-lg font-medium">Step 4</h3>
-                        <p className="text-sm text-gray-600">Approximate duration: Aug 6, 2023 — Sep 12, 2023</p>
-                        <p>Contract on replacement property</p>
-                        <hr className="border-t border-gray-300 my-4" />
-                    </div>
-                    <div>
-                        <h3 className="text-lg font-medium">Step 5</h3>
-                        <p className="text-sm text-gray-600">Approximate duration: Aug 6, 2023 — Sep 12, 2023</p>
-                        <p>Settlement on replacement property</p>
-                        <hr className="border-t border-gray-300 my-4" />
-                    </div>
-                    <div>
-                        <h3 className="text-lg font-medium">Step 6</h3>
-                        <p className="text-sm text-gray-600">Approximate duration: Aug 6, 2023 — Sep 12, 2023</p>
-                        <p>Reporting the exchange to the IRS</p>
-                    </div>
-                </div>
-            </div>
-            <div className="flex w-full items-center justify-start p-6">
-                <Link href="/dashboard/exchanges/create/3"
-                    className="flex h-10 items-center rounded-lg bg-white px-4 text-sm font-medium text-gray-800 transition-colors hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
-                    <span className="hidden md:block">Back to previous step</span>
-                </Link>
-                <div className="pl-4">
-
-                    <Link href="/dashboard/exchanges/create/4"
-                        className="flex h-10 items-center rounded-lg bg-gray-800 px-4 text-sm font-medium text-white transition-colors hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
-                        <span className="hidden md:block">Start the exchange</span>
-                    </Link>
-                </div>
-            </div>
+  return (
+    <div className="w-full px-5">
+      <div className="flex w-full items-center justify-start">
+        <button className="rounded-md border border-gray-800 p-2 font-semibold">
+          Step 4/4
+        </button>
+      </div>
+      <div className="my-5">
+        <span className="text-2xl font-semibold">Start my exchange</span>
+      </div>
+      <div className="bg-gray-100 p-8">
+        <h2 className="mb-6 text-2xl font-semibold">Steps</h2>
+        <div className="space-y-4">
+          <div>
+            <span className="rounded-3xl bg-white px-4 py-2 text-lg font-semibold">
+              Step 1
+            </span>
+            <p className="py-2 text-sm text-gray-600">
+              Approximate duration: Aug 6, 2023 — Sep 12, 2023
+            </p>
+            <p>Contract and exchange documents</p>
+            <hr className="my-4 border-t border-gray-300" />
+          </div>
+          <div>
+            <span className="rounded-3xl bg-white px-4 py-2 text-lg font-semibold">
+              Step 2
+            </span>
+            <p className="py-2 text-sm text-gray-600">
+              Approximate duration: Aug 6, 2023 — Sep 12, 2023
+            </p>
+            <p>Settlement of relinquished property</p>
+            <hr className="my-4 border-t border-gray-300" />
+          </div>
+          <div>
+            <span className="rounded-3xl bg-white px-4 py-2 text-lg font-semibold">
+              Step 3
+            </span>
+            <p className="py-2 text-sm text-gray-600">
+              Approximate duration: Aug 6, 2023 — Sep 12, 2023
+            </p>
+            <p>45-Day ID period</p>
+            <hr className="my-4 border-t border-gray-300" />
+          </div>
+          <div>
+            <span className="rounded-3xl bg-white px-4 py-2 text-lg font-semibold">
+              Step 4
+            </span>
+            <p className="py-2 text-sm text-gray-600">
+              Approximate duration: Aug 6, 2023 — Sep 12, 2023
+            </p>
+            <p>Contract on replacement property</p>
+            <hr className="my-4 border-t border-gray-300" />
+          </div>
+          <div>
+            <span className="rounded-3xl bg-white px-4 py-2 text-lg font-semibold">
+              Step 5
+            </span>
+            <p className="py-2 text-sm text-gray-600">
+              Approximate duration: Aug 6, 2023 — Sep 12, 2023
+            </p>
+            <p>Settlement on replacement property</p>
+            <hr className="my-4 border-t border-gray-300" />
+          </div>
+          <div>
+            <span className="rounded-3xl bg-white px-4 py-2 text-lg font-semibold">
+              Step 6
+            </span>
+            <p className="py-2 text-sm text-gray-600">
+              Approximate duration: Aug 6, 2023 — Sep 12, 2023
+            </p>
+            <p>Reporting the exchange to the IRS</p>
+          </div>
         </div>
-    )
+      </div>
+      <div className="flex w-full items-center justify-start p-6">
+        <Link
+          href="/dashboard/exchanges/create/3"
+          className="flex h-10 items-center rounded-lg bg-white px-4 text-sm font-medium text-gray-800 transition-colors hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+        >
+          <span className="rounded-3xl border border-black px-5 py-2 hover:bg-gray-100">
+            Back to previous step
+          </span>
+        </Link>
+        <div className="pl-4">
+          <Link href="/dashboard/exchanges/create/4">
+            <Button
+              type="submit"
+              text="Next Step"
+              className="mt-2"
+              iconAfter={forwardArrow}
+            />{' '}
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 }
