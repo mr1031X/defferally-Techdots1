@@ -53,8 +53,8 @@ export default function SignUp() {
                 Register
               </h1>
               {
-                step === 1 ?
-                  <Role onSubmit={onSubmit} loading={loading} /> : step === 2 ?
+                step === 0 ?
+                  <Role onSubmit={onSubmit} loading={loading} /> : step === 1 ?
                     <UserInfo onSubmit={onSubmit} loading={loading} /> :
                     <UserPassword onSubmit={onSubmit} loading={loading} />
               }
