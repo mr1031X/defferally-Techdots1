@@ -1,6 +1,6 @@
 import { getDataFromToken } from '@/src/helpers/decode-token';
+import { UpdateUser } from '@/src/interfaces/request/user';
 import { UserService } from '@/src/services/user';
-import { User } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
 const userService = new UserService();
@@ -25,7 +25,7 @@ export async function PUT(req: NextRequest) {
   try {
     const userId = await getDataFromToken(req);
 
-    const reqPayload: User = await req.json();
+    const reqPayload: UpdateUser = await req.json();
     const data = await userService.updateUserById(userId, reqPayload);
 
     const response = NextResponse.json({

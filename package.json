@@ -6,8 +6,7 @@
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "start": "next start",
-    "seed": "node -r dotenv/config ./scripts/seed.js",
-    "prisma:seed": "ts-node prisma/seed.ts",
+    "seed": "ts-node prisma/seed.ts",
     "migrate:deploy": "npx prisma migrate deploy",
     "migrate:dev": "npx prisma migrate dev",
     "generate": "npx prisma generate"
@@ -23,6 +22,7 @@
     "@types/react-redux": "^7.1.33",
     "@vercel/postgres": "^0.5.1",
     "autoprefixer": "10.4.15",
+    "aws-sdk": "^2.1565.0",
     "axios": "^1.6.7",
     "bcrypt": "^5.1.1",
     "clsx": "^2.0.0",
