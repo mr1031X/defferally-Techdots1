@@ -7,7 +7,9 @@ const exchangeService = new ExchangeService();
 export async function PUT(req: NextRequest) {
   try {
     const userId = await getDataFromToken(req);
-    const exchangeId = parseInt(req.url.split('/')[2]);
+    const match = req.url.match(/\/exchanges\/(\d+)/);
+
+    const exchangeId = match ? parseInt(match[1]) : 0;
     const newParty = await req.json();
     const data = await exchangeService.addPartyToExchange(exchangeId, newParty);
 

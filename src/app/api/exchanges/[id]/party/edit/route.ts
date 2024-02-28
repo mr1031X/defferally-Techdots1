@@ -7,8 +7,12 @@ const exchangeService = new ExchangeService();
 export async function PUT(req: NextRequest) {
   try {
     const userId = await getDataFromToken(req);
-    const exchangeId = parseInt(req.url.split('/')[2]);
-    const { partyId, updatedPartyData } = await req.json();
+    const match = req.url.match(/\/exchanges\/(\d+)/);
+
+    const exchangeId = match ? parseInt(match[1]) : 0;
+
+    const { partyId, ...updatedPartyData } = await req.json();
+
     const data = await exchangeService.editPartyOfExchange(
       exchangeId,
       partyId,

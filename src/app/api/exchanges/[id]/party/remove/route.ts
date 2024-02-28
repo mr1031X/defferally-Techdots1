@@ -7,7 +7,10 @@ const exchangeService = new ExchangeService();
 export async function DELETE(req: NextRequest) {
   try {
     const userId = await getDataFromToken(req);
-    const exchangeId = parseInt(req.url.split('/')[2]);
+    const match = req.url.match(/\/exchanges\/(\d+)/);
+
+    const exchangeId = match ? parseInt(match[1]) : 0;
+    
     const { partyId } = await req.json();
     const data = await exchangeService.removePartyFromExchange(
       exchangeId,

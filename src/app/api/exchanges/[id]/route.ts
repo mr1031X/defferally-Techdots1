@@ -7,7 +7,10 @@ const exchangeService = new ExchangeService();
 export async function GET(req: NextRequest) {
   try {
     const userId = await getDataFromToken(req);
-    const id = parseInt(req.url.split('/')[2]);
+    const match = req.url.match(/\/exchanges\/(\d+)/);
+
+    const id = match ? parseInt(match[1]) : 0;
+    
     const data = await exchangeService.getExchangeById(id);
 
     const response = NextResponse.json({

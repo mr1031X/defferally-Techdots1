@@ -175,7 +175,7 @@ export class ExchangeService {
   async editPartyOfExchange(
     exchangeId: number,
     partyId: number,
-    updatedPartyData: Party,
+    updatedPartyData: PartyWithoutId,
   ): Promise<Exchange | null> {
     try {
       // Fetch the existing exchange to ensure it exists
@@ -200,7 +200,7 @@ export class ExchangeService {
               where: {
                 id: partyId,
               },
-              data: updatedPartyData,
+              data: { ...updatedPartyData },
             },
           },
         },

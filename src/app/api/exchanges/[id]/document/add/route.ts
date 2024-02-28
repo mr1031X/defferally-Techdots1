@@ -9,7 +9,8 @@ export async function POST(req: NextRequest) {
   try {
     const userId = await getDataFromToken(req);
 
-    const exchangeId = parseInt(req.url.split('/')[2]);
+    const match = req.url.match(/\/exchanges\/(\d+)/);
+    const exchangeId = match ? parseInt(match[1]) : 0;
 
     const { type, file: base64File } = await req.json();
 
