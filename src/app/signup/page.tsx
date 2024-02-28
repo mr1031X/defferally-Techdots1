@@ -1,34 +1,21 @@
-import React, { useState, useEffect } from 'react';
+'use client'
+import React, { useState } from 'react';
 import NavBar from '@/src/components/Navbar/navbar';
 import { toast, ToastContainer } from 'react-toastify';
 import Role from './SignUpSteps/userRole';
 import Loader from '@/src/components/Loader';
 import UserInfo from './SignUpSteps/userInfo';
 import UserPassword from './SignUpSteps/userPassword';
-import { useDispatch } from 'react-redux';
-import { setUserAndToken } from '@/src/redux/Slices/authSlice';
 import { IUserSignUpPayload } from '@/src/interfaces/requests/user';
-import { usePost } from './api';
 
 export default function SignUp() {
-  const dispatch = useDispatch();
-  const { postData, response, isLoading, error } = usePost();
-
   const [step, setStep] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [form, setForm] = useState<IUserSignUpPayload>({});
 
-  useEffect(() => {
-    if (response) {
-      // Handle the response here
-      console.log('Response:', response);
-      // Assuming the response contains user data and token
-      const { user, token } = response;
-      dispatch(setUserAndToken({ user, token }));
-    }
-  }, [response, dispatch]);
-
   const onSubmit = async (data: object, step: number) => {
+    console.log("====== data =========",data);
+    
     setForm((prevForm) => ({
       ...prevForm,
       ...data,
@@ -42,13 +29,13 @@ export default function SignUp() {
   const signUp = async () => {
     try {
       setLoading(true);
-      await postData("/api/signUp", JSON.stringify(form));
     } catch (error: any) {
       console.log("*** error ***", error);
     } finally {
       setLoading(false);
     }
   };
+// console.log("=========",form);
 
   return (
     <>

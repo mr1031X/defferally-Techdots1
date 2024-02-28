@@ -1,5 +1,5 @@
 import LoginForm from '@/src/app/ui/login-form';
-import DeferAllyLogo from '../ui/deferallyLogo';
+import DeferAllyLogo from '@/src/app/ui/deferallyLogo';
 
 export default function LoginPage() {
   return (

@@ -2,11 +2,11 @@ import { DocumentIcon } from "@heroicons/react/24/outline"
 
 export default async function DocumentUploadForm() {
     return (
-        <div className="bg-gray-50 p-6">
+        <div className="bg-gray-100 p-6">
             <h2 className="text-xl font-semibold mb-4">Documents</h2>
             <div className="space-y-6">
                 <div className="flex flex-row">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-semibold mr-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white border-2 border-black flex items-center justify-center text-sm font-semibold mr-4">
                         1
                     </div>
                     <div className="w-80">
@@ -18,14 +18,15 @@ export default async function DocumentUploadForm() {
                         </div>
                     </div>
                     <div className="px-4">
-                        <div className="flex items-center justify-between border-dashed border-2 border-gray-300 bg-white rounded-lg p-4">
-                            <DocumentIcon className="text-gray-400" />
-                            <span className="text-xs font-medium">Upload only PDF files</span>
+                        <div className="border-dashed border border-gray-700 bg-white rounded-md px-10 py-4">
+                            <DocumentIcon className="text-gray-400 w-14 h-14 flex mx-auto mb-2" />
+                            <span className="text-sm font-semibold">Upload only PDF files</span>
                         </div>
                     </div>
                 </div>
+                {/* <div className="border-b border-gray-400"></div> */}
                 <div className="flex flex-row">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-semibold mr-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white border-2 border-black flex items-center justify-center text-sm font-semibold mr-4">
                         2
                     </div>
                     <div className="w-80">
@@ -38,14 +39,14 @@ export default async function DocumentUploadForm() {
                         </div>
                     </div>
                     <div className="px-4">
-                        <div className="flex items-center justify-between border-dashed border-2 border-gray-300 bg-white rounded-lg p-4">
-                            <DocumentIcon className="text-gray-400" />
-                            <span className="text-xs font-medium">Upload only PDF files</span>
+                        <div className="border-dashed border border-gray-700 bg-white rounded-md px-10 py-4">
+                            <DocumentIcon className="text-gray-400 w-14 h-14 flex mx-auto mb-2" />
+                            <span className="text-sm font-semibold">Upload only PDF files</span>
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-row">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-semibold mr-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white border-2 border-black flex items-center justify-center text-sm font-semibold mr-4">
                         3
                     </div>
                     <div className="w-80">
@@ -57,14 +58,14 @@ export default async function DocumentUploadForm() {
                         </div>
                     </div>
                     <div className="px-4">
-                        <div className="flex items-center justify-between border-dashed border-2 border-gray-300 bg-white rounded-lg p-4">
-                            <DocumentIcon className="text-gray-400" />
-                            <span className="text-xs font-medium">Upload only PDF files</span>
+                        <div className="border-dashed border border-gray-700 bg-white rounded-md px-10 py-4">
+                            <DocumentIcon className="text-gray-400 w-14 h-14 flex mx-auto mb-2" />
+                            <span className="text-sm font-semibold">Upload only PDF files</span>
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-row">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-semibold mr-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white border-2 border-black flex items-center justify-center text-sm font-semibold mr-4">
                         4
                     </div>
                     <div className="w-80">
@@ -76,14 +77,14 @@ export default async function DocumentUploadForm() {
                         </div>
                     </div>
                     <div className="px-4">
-                        <div className="flex items-center justify-between border-dashed border-2 border-gray-300 bg-white rounded-lg p-4">
-                            <DocumentIcon className="text-gray-400" />
-                            <span className="text-xs font-medium">Upload only PDF files</span>
+                        <div className="border-dashed border border-gray-700 bg-white rounded-md px-10 py-4">
+                            <DocumentIcon className="text-gray-400 w-14 h-14 flex mx-auto mb-2" />
+                            <span className="text-sm font-semibold">Upload only PDF files</span>
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-row">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-semibold mr-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white border-2 border-black flex items-center justify-center text-sm font-semibold mr-4">
                         5
                     </div>
                     <div className="w-80">
@@ -96,9 +97,9 @@ export default async function DocumentUploadForm() {
                         </div>
                     </div>
                     <div className="px-4">
-                        <div className="flex items-center justify-between border-dashed border-2 border-gray-300 bg-white rounded-lg p-4">
-                            <DocumentIcon className="text-gray-400" />
-                            <span className="text-xs font-medium">Upload only PDF files</span>
+                        <div className="border-dashed border border-gray-700 bg-white rounded-md px-10 py-4">
+                            <DocumentIcon className="text-gray-400 w-14 h-14 flex mx-auto mb-2" />
+                            <span className="text-sm font-semibold">Upload only PDF files</span>
                         </div>
                     </div>
                 </div>

@@ -50,8 +50,7 @@ export default function Input({
         // Call the callback function with the new visibility state
         showPassword(isVisible)
     }
-    const InputComponent = type === 'textarea' ? 'textarea' : 'input';
-
+    
     return (
         <div>
             {
@@ -70,16 +69,32 @@ export default function Input({
                 <span className={`text-gray-400 text-xs ${subTitle ? 'mb-3' : ''}`}>{subTitle}</span>
             }
             <div className='relatived'>
-                <InputComponent
-                    className={`${className ? className : ''} w-full ${type !== 'textarea' ? 'h-8 md:h-10' : ''} px-2 rounded-md border border-gray-300 focus:border focus:border-gray-400 text-sm md:text-lg font-light`}
-                    {...(useReactHookForm && register
-                        ? register(name, validationRules)
-                        : {})}
-                    type={isVisible ? 'text' : type} // Toggle between 'text' and original type
-                    placeholder={placeholder}
-                    {...props}
-                    style={inputStyle} // Use the updated inputStyle here
-                />
+            {type === 'textarea' ? (
+          <textarea
+            className={`${className ? className : ''} w-full ${
+              type !== 'textarea' ? 'h-8 md:h-10' : ''
+            } rounded-md border border-gray-300 px-2 text-sm font-light focus:border focus:border-gray-400 md:text-lg`}
+            {...(useReactHookForm && register
+              ? register(name, validationRules)
+              : {})}
+            placeholder={placeholder}
+            {...props}
+            style={inputStyle} // Use the updated inputStyle here
+          />
+        ) : (
+          <input
+            className={`${className ? className : ''} w-full ${
+              type !== 'textarea' ? 'h-8 md:h-10' : ''
+            } rounded-md border border-gray-300 px-2 text-sm font-light focus:border focus:border-gray-400 md:text-lg`}
+            {...(useReactHookForm && register
+              ? register(name, validationRules)
+              : {})}
+            type={isVisible ? 'text' : type} // Toggle between 'text' and original type
+            placeholder={placeholder}
+            {...props}
+            style={inputStyle} // Use the updated inputStyle here
+          />
+        )}
                 {type === 'password' && ( // Only show the eye icon for password input
                     <div className='flex justify-end mb-[-27px]'>
                         <Image

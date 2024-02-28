@@ -1,5 +1,7 @@
 import PropertyTypeForm from '@/src/app/ui/exchanges/property-type-form'
+import Button from '@/src/components/Buttons/button'
 import Link from 'next/link'
+import forwardArrow from '@/public/forwardArrow.svg'
 
 export default function Page() {
     return (
@@ -9,9 +11,13 @@ export default function Page() {
             </div>
             <PropertyTypeForm />
             <div className="flex w-full items-center justify-start p-6">
-                <Link href="/dashboard/exchanges"
-                    className="flex h-10 items-center rounded-lg bg-white px-4 text-sm font-medium text-gray-800 transition-colors hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
-                    <span className="hidden md:block">Cancel</span>
+                <Link href="/dashboard/exchanges/create/2">
+                    <Button
+                        type="submit"
+                        text="Next Step"
+                        className='mt-2'
+                        iconAfter={forwardArrow}
+                    />
                 </Link>
             </div>
         </div>

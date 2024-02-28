@@ -2,7 +2,7 @@ import {
     User,
     UserInformationInputs,
     UserPasswordInputs
-  } from '@/src/interfaces/users'
+  } from '@/src/interfaces/request/user'
   
   export interface IUserSignInPayload {
       email: string
