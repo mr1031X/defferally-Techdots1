@@ -1,21 +1,18 @@
-import { ILogin } from '@/src/interfaces/user';
+import { getDataFromToken } from '@/src/helpers/decode-token';
 import { UserService } from '@/src/services/user';
 import { NextRequest, NextResponse } from 'next/server';
 
 const userService = new UserService();
 
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
-    const reqBody: ILogin = await req.json();
-
-    const data = await userService.loginUser(reqBody);
+    const userId = await getDataFromToken(req);
+    const data = await userService.getUsers();
 
     const response = NextResponse.json({
       success: true,
       data,
     });
-
-    response.cookies.set('access_token', data.token as string, { httpOnly: true });
 
     return response;
   } catch (error) {

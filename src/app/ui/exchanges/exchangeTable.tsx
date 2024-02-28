@@ -1,4 +1,4 @@
-import { formatDate } from '@/src/helpers';
+import { formatDate } from '@/src/helpers/dateFormat';
 
 const exchanges = [
   {
