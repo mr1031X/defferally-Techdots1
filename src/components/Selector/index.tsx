@@ -57,7 +57,7 @@ const Select: React.FC<SelectProps> = ({
         onChange={handleSelectChange}
       >
         <option value="" disabled>
-          Choose Category
+          Choose option
         </option>
         {options?.length &&
           options.map((option) => (

@@ -24,7 +24,6 @@ export default async function DocumentUploadForm() {
                         </div>
                     </div>
                 </div>
-                {/* <div className="border-b border-gray-400"></div> */}
                 <div className="flex flex-row">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white border-2 border-black flex items-center justify-center text-sm font-semibold mr-4">
                         2
