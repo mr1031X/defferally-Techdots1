@@ -1,3 +1,4 @@
+'use client'
 import { roboto } from '@/src/app/ui/fonts';
 import {
   AtSymbolIcon,

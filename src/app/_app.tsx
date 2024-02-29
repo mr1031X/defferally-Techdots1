@@ -1,16 +1,20 @@
-import { QueryClientProvider, QueryClient } from 'react-query';
+'use client';
 import React from 'react';
-import { AuthProvider } from '@/src/hooks/authContext'; // Adjust the path accordingly
+import { QueryClientProvider, QueryClient } from 'react-query';
+import Layout from './layout';
 
-const App: React.FC<{ Component: React.ComponentType<any>; pageProps: any }> = ({ Component, pageProps }) => {
+const App: React.FC<{
+  Component: React.ComponentType<any>;
+  pageProps: any;
+}> = ({ Component, pageProps }) => {
   const queryClient = new QueryClient({});
 
   return (
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <Layout>
         <Component {...pageProps} />
-      </QueryClientProvider>
-    </AuthProvider>
+      </Layout>
+    </QueryClientProvider>
   );
 };
 

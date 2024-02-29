@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import SideNav from '@/src/app/ui/dashboard/sidenav';
 import TopNav from '../ui/dashboard/topnav';
 import React, { useState } from 'react';

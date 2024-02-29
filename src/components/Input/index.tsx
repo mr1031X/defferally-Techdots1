@@ -1,3 +1,4 @@
+'use client'
 import styles from './input.module.css'
 import Image from 'next/image'
 import React from 'react'
