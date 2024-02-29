@@ -1,25 +1,23 @@
-'use client'
-import React, { useState } from 'react'
-import { RegisterOptions, UseFormRegister } from 'react-hook-form'
-import styles from '@/src/components/Input/input.module.css'
+import React, { useState, useEffect } from 'react';
+import { RegisterOptions, UseFormRegister } from 'react-hook-form';
+import styles from '@/src/components/Input/input.module.css';
 
 interface Option {
-  value: string | number
-  label: string
+  value: string | number;
+  label: string;
 }
 
 interface SelectProps {
-  label?: string
-  name: string
-  register?: UseFormRegister<any> // Adjust the type based on your form data structure
-  errors?: Record<string, any> // Use the correct type based on your version of react-hook-form
-  useReactHookForm?: boolean
-  validationRules?: RegisterOptions
-  options?: Option[]
-  defaultValue?: string | number
-  style?: React.CSSProperties
-  className?: string
-  setSelectedValueProp?: (value: any) => void
+  label?: string;
+  name: string;
+  register?: UseFormRegister<any>;
+  errors?: Record<string, any>;
+  validationRules?: RegisterOptions;
+  options?: Option[];
+  defaultValue?: string | number;
+  style?: React.CSSProperties;
+  className?: string;
+  setSelectedValueProp?: (value: any) => void;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -32,21 +30,32 @@ const Select: React.FC<SelectProps> = ({
   register,
   validationRules,
   name,
-  errors
+  errors,
 }) => {
-  const [selectedValue, setSelectedValue] = useState(defaultValue || '')
+  const [selectedValue, setSelectedValue] = useState<string | number>(
+    defaultValue || ''
+  );
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newValue = event.target.value
-    setSelectedValue(newValue)
+  // Update the selected value when the default value changes
+  useEffect(() => {
+    setSelectedValue(defaultValue || '');
+  }, [defaultValue]);
+
+  const handleSelectChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const newValue = event.target.value;
+    setSelectedValue(newValue);
     if (setSelectedValueProp) {
-      setSelectedValueProp(newValue)
+      setSelectedValueProp(newValue);
     }
-  }
+  };
 
   return (
     <div>
-      {label && <label className="flex mb-1 text-sm text-black">{label}</label>}
+      {label && (
+        <label className="flex mb-1 text-sm text-black">{label}</label>
+      )}
       <select
         id="default"
         className={`bg-white border border-gray-300 text-gray-900 mb-6 text-sm h-[45px] rounded-md focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-gray-500 dark:focus:border-gray-500 ${
@@ -80,7 +89,7 @@ const Select: React.FC<SelectProps> = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Select
+export default Select;

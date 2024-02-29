@@ -1,8 +1,10 @@
 import Button from '@/src/components/Buttons/button';
+import Layout from '@/src/components/Layouts/dashboardLayout';
 import Link from 'next/link';
 
 export default function Page() {
   return (
+    <Layout>
     <div className="w-full px-5">
       <div className="flex w-full items-center justify-start">
         <button className="rounded-md border border-gray-800 p-2 font-semibold">
@@ -78,7 +80,7 @@ export default function Page() {
       </div>
       <div className="flex w-full items-center justify-start p-6">
         <Link
-          href="/dashboard/exchanges/create/3"
+          href="/exchanges/create/3"
           className="flex h-10 items-center rounded-lg bg-white px-4 text-sm font-medium text-gray-800 transition-colors hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
         >
           <span className="rounded-3xl border border-black px-5 py-2 hover:bg-gray-100">
@@ -86,7 +88,7 @@ export default function Page() {
           </span>
         </Link>
         <div className="pl-4">
-          <Link href="/dashboard/exchanges/create/4">
+          <Link href="/exchanges/create/4">
             <Button
               type="submit"
               text="Start my exchange"
@@ -96,5 +98,6 @@ export default function Page() {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }

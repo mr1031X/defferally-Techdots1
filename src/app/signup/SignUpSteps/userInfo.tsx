@@ -1,7 +1,7 @@
 'use client';
 import Button from '@/src/components/Buttons/button';
 import Input from '@/src/components/Input';
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from "react-hook-form";
 import { UserInformationInputs } from "@/src/interfaces/request/user";
 import forwardArrow from '@/public/forwardArrow.svg'
@@ -20,7 +20,7 @@ export default function UserInfo({ onSubmit, loading }: SignUpInfoProps) {
 
     return (
         <form onSubmit={handleSubmit((data: UserInformationInputs) =>
-            onSubmit(data, 2),
+            onSubmit(data, 3),
         )}>
             <div className='flex flex-col'>
                 <span className='my-5'>Fill the info</span>
@@ -29,11 +29,15 @@ export default function UserInfo({ onSubmit, loading }: SignUpInfoProps) {
                         type="text"
                         placeholder="Enter Name"
                         title='Full Name'
-                        name="full_name"
+                        name="name"
                         register={register}
                         errors={errors}
                         requiredSign={false}
-                        className='mb-5'
+                        className='mb-2'
+                        validationRules={{
+                            required: 'Full Name is required',
+                            maxLength: 16
+                          }}
                     />
                     <Input
                         type="email"
@@ -43,17 +47,25 @@ export default function UserInfo({ onSubmit, loading }: SignUpInfoProps) {
                         register={register}
                         errors={errors}
                         requiredSign={false}
-                        className='mb-5'
+                        className='mb-2'
+                        validationRules={{
+                            required: 'Email is required',
+                            maxLength: 28
+                          }}
                     />
                     <Input
                         type="text"
                         placeholder="Enter Company Name"
                         title='Company Name'
-                        name="company_name"
+                        name="company"
                         register={register}
                         errors={errors}
                         requiredSign={false}
-                        className='mb-5'
+                        className='mb-2'
+                        validationRules={{
+                            required: 'Company Name is required',
+                            maxLength: 16
+                          }}
                     />
                     <Button
                         type="submit"

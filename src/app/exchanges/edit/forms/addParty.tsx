@@ -1,28 +1,21 @@
 'use client';
 import React, { useState } from 'react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 import Button from '@/src/components/Buttons/button';
 import Input from '@/src/components/Input';
 import { useForm } from 'react-hook-form';
 import Select from '@/src/components/Selector';
+import Modal from '@/src/components/Modal';
+import { Role } from '@/src/mocks/common';
 
-const Role = [
-    { value: 1, label: 'Qualified intermediate' },
-    { value: 2, label: 'Bachelors' },
-    { value: 3, label: 'Masters' },
-  ];
-export default function EditParty() {
+export default function AddParty({ onClose }: { onClose: () => void }) {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm();
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handleCategoryChange = (selectedCategory: number) => {
-    setValue('=== role ===', selectedCategory);
-  };
+  const handleCategoryChange = (selectedCategory: number) => {};
 
   const onSubmit = (data: any) => {
     // Handle form submission
@@ -30,23 +23,18 @@ export default function EditParty() {
 
   return (
     <>
-<div className="fixed z-[100] mt-[-7rem] h-[115vh] w-full bg-black opacity-20" style={{ backdropFilter: 'blur(4px)' }}></div>
-      <div className="fixed z-[101] w-1/3 ml-[22%] rounded-lg bg-white p-5">
-        <div className="flex justify-end">
-          <XMarkIcon className="h-5 w-5" />
-        </div>
+      <Modal onClose={onClose}>
         <div className="mb-5">
-          <span className="text-lg font-semibold">Edit party</span>
+          <span className="text-xl font-semibold">Add party</span>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className='p-3'>
           <div className="grid grid-cols-2 gap-5">
-          <Select
+            <Select
               name="role"
               errors={errors}
               label="Role"
               options={Role}
               setSelectedValueProp={handleCategoryChange}
-              // defaultValue={signUpData?.user?.experience}
               className="w-full cursor-pointer text-lg"
             />
           </div>
@@ -90,21 +78,18 @@ export default function EditParty() {
               requiredSign={false}
             />
           </div>
-          <div className="flex gap-2 items-center mt-5">
+          <div className="mt-5 flex items-center gap-2">
             <button
               type="button"
-              className="rounded-3xl border border-black px-4 h-10 hover:bg-gray-100"
+              className="h-10 rounded-3xl border border-black px-4 hover:bg-gray-100"
+              onClick={onClose}
             >
               Cancel
             </button>
-            <Button
-              type="submit"
-              text="Save changes"
-              disabled={loading}
-            />
+            <Button type="submit" text="Save changes" disabled={loading} />
           </div>
         </form>
-      </div>
+      </Modal>
     </>
   );
 }
