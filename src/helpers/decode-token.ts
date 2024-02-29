@@ -7,7 +7,7 @@ export const getDataFromToken = async (request: NextRequest) => {
 
     const decodedToken = jwt.verify(
       token as string,
-      process.env.JWT_SECRET as string,
+      'deferally-jwt-secret',
     ) as { userId: number };
 
     const userId = decodedToken.userId;

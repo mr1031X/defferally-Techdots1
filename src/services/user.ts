@@ -28,15 +28,15 @@ export class UserService {
         },
       });
 
-      // const token = jwt.sign(
-      //   { userId: createdUser.id },
-      //   process.env.JWT_SECRET as string,
-      //   { expiresIn: '30d' },
-      // );
+      const token = jwt.sign(
+        { userId: createdUser.id },
+        "deferally-jwt-secret",
+        { expiresIn: '30d' },
+      );
 
       return {
         user: createdUser,
-        token: '',
+        token,
         message: 'User registered successfully',
       };
     } catch (error) {
@@ -62,11 +62,11 @@ export class UserService {
         return { message: 'Invalid credentials' };
       }
 
-      // const token = jwt.sign(
-      //   { userId: user.id },
-      //   process.env.JWT_SECRET as string,
-      //   { expiresIn: '30d' },
-      // );
+      const token = jwt.sign(
+        { userId: user.id },
+        "deferally-jwt-secret",
+        { expiresIn: '30d' },
+      );
 
       return {
         user: user,

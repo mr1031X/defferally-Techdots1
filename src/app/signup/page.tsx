@@ -8,6 +8,7 @@ import UserInfo from './SignUpSteps/userInfo';
 import UserPassword from './SignUpSteps/userPassword';
 import { AuthService } from '@/src/network/auth';
 import { Register, UpdateUser } from '@/src/interfaces/request/user';
+import { useRouter } from 'next/navigation'; // Import useRouter hook
 
 const authService = new AuthService();
 
@@ -15,6 +16,8 @@ export default function SignUp() {
   const [step, setStep] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
   const [form, setForm] = useState({});
+
+  const router = useRouter(); // Initialize useRouter
 
   const onSubmit = async (data: UpdateUser, step: number) => {
     setForm((prevForm) => ({
@@ -42,7 +45,7 @@ export default function SignUp() {
         localStorage.setItem('user_id', `${apiResponse?.user?.id}`)
         localStorage.setItem('user', JSON.stringify(apiResponse?.user))
         localStorage.setItem('access_token', apiResponse?.token)
-        window.location.reload();
+        router.push('/exchanges'); // Navigate to '/exchanges' route
       }
     } catch (error: any) {
       console.log('*** error ***', error);
