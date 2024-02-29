@@ -8,11 +8,11 @@ const exchangeService = new ExchangeService();
 
 export async function POST(req: NextRequest) {
   try {
-    await getDataFromToken(req);
+    const userId = await getDataFromToken(req);
 
     const reqPayload: CreateExchange = await req.json();
 
-    const { userId, type, parties, steps, pdfFiles } = reqPayload;
+    const { type, parties, steps, pdfFiles } = reqPayload;
 
     console.log(userId, type, parties, steps, pdfFiles);
 
