@@ -11,7 +11,7 @@ export default function Layout({ children }: LayoutProps) {
   const [hideNav, setHideNav] = useState(false);
 
   // Callback function to update hideNav state
-  const updateHideNav = (value: boolean) => {
+  const updatehidenav = (value: boolean) => {
     setHideNav(value);
   };
 
@@ -22,7 +22,7 @@ export default function Layout({ children }: LayoutProps) {
       </div>
       <div className="w-3/4 flex-none pr-2 md:overflow-y-auto md:pr-2">
         <TopNav hideNav={hideNav} />
-        <div>{React.cloneElement(children as React.ReactElement, { updateHideNav })}</div>
+        <div>{React.cloneElement(children as React.ReactElement, { updatehidenav })}</div>
       </div>
     </div>
   );
