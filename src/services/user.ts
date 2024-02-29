@@ -30,7 +30,7 @@ export class UserService {
 
       const token = jwt.sign(
         { userId: createdUser.id },
-        process.env.JWT_SECRET as string,
+        "deferally-jwt-secret",
         { expiresIn: '30d' },
       );
 
@@ -40,7 +40,7 @@ export class UserService {
         message: 'User registered successfully',
       };
     } catch (error) {
-      throw { message: 'Internal Server Error', error };
+      throw { message: 'Internal Server Error', error: error };
     }
   }
 
@@ -64,7 +64,7 @@ export class UserService {
 
       const token = jwt.sign(
         { userId: user.id },
-        process.env.JWT_SECRET as string,
+        "deferally-jwt-secret",
         { expiresIn: '30d' },
       );
 
@@ -74,7 +74,7 @@ export class UserService {
         message: 'User is successfully loggedIn',
       };
     } catch (error) {
-      throw { message: 'Internal Server Error', error };
+      throw { message: 'Internal Server Error', error: error };
     }
   }
 
