@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image';
 import Button from '@/src/components/Buttons/button';
+import Link from 'next/link';
 
 export default function Navbar() {
     const [loading, setLoading] = useState<boolean>()
@@ -28,16 +29,20 @@ export default function Navbar() {
                 </span>
             </div>
             <div className='flex gap-2'>
+                <Link href="/login">
                 <Button
                     type="button"
                     text="Login"
                     disabled={loading}
                 />                    
+                </Link>
+                <Link href="/signup">
                 <Button
                     type="button"
                     text="Register"
                     disabled={loading}
                 />
+                </Link>
             </div>
         </div>
     )
