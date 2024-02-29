@@ -1,6 +1,5 @@
 'use client';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
-import PartiesForm from '@/src/app/dashboard/exchanges/edit/forms/PartiesForm';
 import StepsForm from '@/src/app/dashboard/exchanges/edit/forms/stepsForm';
 import EditParty from './forms/editParty';
 import { useState } from 'react';
@@ -8,6 +7,7 @@ import AddParty from './forms/addParty';
 import Documents from './forms/documents';
 import AddDocuments from './forms/addDocuments';
 import { RemovePartyModal, RemoveDocModal } from '@/src/app/dashboard/exchanges/edit/forms/removeModal';
+import PartiesForm from './forms/partiesForm';
 
 export default function Page() {
   const [isEditModal, setIsEditModal] = useState<boolean>(false);
