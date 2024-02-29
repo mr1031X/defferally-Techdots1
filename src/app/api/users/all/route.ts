@@ -6,7 +6,6 @@ const userService = new UserService();
 
 export async function GET(req: NextRequest) {
   try {
-    const userId = await getDataFromToken(req);
     const data = await userService.getUsers();
 
     const response = NextResponse.json({
