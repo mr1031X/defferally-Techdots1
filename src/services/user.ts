@@ -28,19 +28,19 @@ export class UserService {
         },
       });
 
-      const token = jwt.sign(
-        { userId: createdUser.id },
-        process.env.JWT_SECRET as string,
-        { expiresIn: '30d' },
-      );
+      // const token = jwt.sign(
+      //   { userId: createdUser.id },
+      //   process.env.JWT_SECRET as string,
+      //   { expiresIn: '30d' },
+      // );
 
       return {
         user: createdUser,
-        token,
+        token: '',
         message: 'User registered successfully',
       };
     } catch (error) {
-      throw { message: 'Internal Server Error', error };
+      throw { message: 'Internal Server Error', error: error };
     }
   }
 
@@ -62,19 +62,19 @@ export class UserService {
         return { message: 'Invalid credentials' };
       }
 
-      const token = jwt.sign(
-        { userId: user.id },
-        process.env.JWT_SECRET as string,
-        { expiresIn: '30d' },
-      );
+      // const token = jwt.sign(
+      //   { userId: user.id },
+      //   process.env.JWT_SECRET as string,
+      //   { expiresIn: '30d' },
+      // );
 
       return {
         user: user,
-        token,
+        token: '',
         message: 'User is successfully loggedIn',
       };
     } catch (error) {
-      throw { message: 'Internal Server Error', error };
+      throw { message: 'Internal Server Error', error: error };
     }
   }
 
