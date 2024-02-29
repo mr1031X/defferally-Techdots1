@@ -46,6 +46,7 @@ export default function SignUp() {
       }
     } catch (error: any) {
       console.log('*** error ***', error);
+      alert("Something went wrong")
       setLoading(false);
     } finally {
       setLoading(false);
