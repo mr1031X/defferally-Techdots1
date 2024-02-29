@@ -1,3 +1,4 @@
+'use client'
 import Input from '@/src/components/Input';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';

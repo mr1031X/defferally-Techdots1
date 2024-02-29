@@ -1,4 +1,4 @@
-'use client';
+"use client"
 import { CreateExchange } from '@/src/app/ui/exchanges/buttons';
 import ExchangeTable from '@/src/app/ui/exchanges/exchangeTable';
 import React, { useState } from 'react';

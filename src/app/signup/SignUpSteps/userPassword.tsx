@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Button from '@/src/components/Buttons/button';
 import Input from '@/src/components/Input';
 import React, { useState } from 'react'
-import { UserPasswordInputs } from "@/src/interfaces/user";
+import { UserPasswordInputs } from "@/src/interfaces/request/user";
 import forwardArrow from '@/public/forwardArrow.svg'
 
 interface SignUpPasswordProps {

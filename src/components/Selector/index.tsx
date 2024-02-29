@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import { RegisterOptions, UseFormRegister } from 'react-hook-form'
 import styles from '@/src/components/Input/input.module.css'
