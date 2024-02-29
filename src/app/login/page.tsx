@@ -36,7 +36,9 @@ export default function Page() {
         window.location.reload();
       }  
     } catch (error) {
-      console.log("*** Error ***", error);
+      console.log('*** error ***', error);
+      alert("Something went wrong")
+      setLoading(false);
       
     }  
   };
