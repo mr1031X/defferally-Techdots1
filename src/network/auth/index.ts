@@ -13,7 +13,7 @@ export class AuthService extends HttpService {
     }
   };
 
-  signUp = async (data: Register): Promise<any> => {
+  signUp = async (data: UpdateUser): Promise<any> => {
     try {
       const apiResponse = await this.post(`api/users/register`, data);
 

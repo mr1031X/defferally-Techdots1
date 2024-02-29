@@ -7,7 +7,7 @@ import Loader from '@/src/components/Loader';
 import UserInfo from './SignUpSteps/userInfo';
 import UserPassword from './SignUpSteps/userPassword';
 import { AuthService } from '@/src/network/auth';
-import { Register } from '@/src/interfaces/request/user';
+import { Register, UpdateUser } from '@/src/interfaces/request/user';
 
 const authService = new AuthService();
 
@@ -16,7 +16,7 @@ export default function SignUp() {
   const [loading, setLoading] = useState<boolean>(false);
   const [form, setForm] = useState({});
 
-  const onSubmit = async (data: Register, step: number) => {
+  const onSubmit = async (data: UpdateUser, step: number) => {
     setForm((prevForm) => ({
       ...prevForm,
       ...data,
@@ -30,7 +30,7 @@ export default function SignUp() {
     }
   };
 
-  const signUp = async (data: Register) => {
+  const signUp = async (data: UpdateUser) => {
     try {
       setLoading(true);
       const response = await authService.signUp(data);

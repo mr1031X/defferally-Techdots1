@@ -156,7 +156,7 @@ const userId = parseInt(id, 10);
           </div>
           <div className="border-b border-gray-400 py-2"></div>
           <div className="mt-6 grid grid-cols-4">
-            <form onSubmit={handleSubmit((data: UpdateUser) => onSubmit(data))}>
+            <form onSubmit={handleSubmit((data: any) => onSubmit(data))}>
               <Input
                 type="password"
                 placeholder="Password"

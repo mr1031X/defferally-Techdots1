@@ -1,8 +1,8 @@
 import { UserRole } from "@prisma/client";
 export interface Register {
   name?: string;
-  email?: string;
-  password?: string;
+  email: string;
+  password: string;
   phone?: string | null;
   company?: string | null;
   role?: UserRole;
