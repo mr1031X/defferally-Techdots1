@@ -1,7 +1,7 @@
 'use client';
 import Button from '@/src/components/Buttons/button';
 import Input from '@/src/components/Input';
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from "react-hook-form";
 import { UserInformationInputs } from "@/src/interfaces/user";
 import forwardArrow from '@/public/forwardArrow.svg'

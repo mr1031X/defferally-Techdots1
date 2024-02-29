@@ -6,7 +6,8 @@ import axios, {
 } from 'axios'
 
 const apiClient: AxiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  // baseURL: process.env.REACT_APP_API_URL,
+  baseURL: 'something',
   headers: {
     'Content-Type': 'multipart/form-data',
     Accept: 'application/json'

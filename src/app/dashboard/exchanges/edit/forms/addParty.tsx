@@ -11,7 +11,7 @@ const Role = [
   { value: 2, label: 'Bachelors' },
   { value: 3, label: 'Masters' },
 ];
-export default function EditParty({ onClose }: { onClose: () => void }) {
+export default function AddParty({ onClose }: { onClose: () => void }) {
   const {
     register,
     handleSubmit,
@@ -30,7 +30,7 @@ export default function EditParty({ onClose }: { onClose: () => void }) {
     <>
       <Modal onClose={onClose}>
         <div className="mb-5">
-          <span className="text-xl font-semibold">Edit party</span>
+          <span className="text-xl font-semibold">Add party</span>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className='p-3'>
           <div className="grid grid-cols-2 gap-5">

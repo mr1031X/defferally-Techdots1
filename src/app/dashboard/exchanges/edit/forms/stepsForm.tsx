@@ -7,7 +7,7 @@ export default function StepsForm() {
       setShowAdditionalForm(!showAdditionalForm);
     };
   return (
-    <div className="h-[80vh] w-[40%] overflow-auto bg-gray-100 p-8">
+    <div className="h-[100vh] w-[40%] overflow-auto bg-gray-100 p-8">
     <h2 className="mb-6 text-2xl font-semibold">Steps</h2>
     <div className="space-y-4">
       <div>

@@ -9,8 +9,12 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${roboto.className} antialiased`}>
-      {children}
-    </div>
+    <html lang='en'>
+      <body>
+        <div className={`${roboto.className} antialiased`}>
+          {children}
+        </div>
+      </body>
+    </html>
   );
 }

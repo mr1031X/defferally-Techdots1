@@ -29,7 +29,9 @@ export default function Page() {
               ? 'border border-gray-800 text-gray-800 font-semibold'
               : 'border border-gray-300'
           } py-2 px-2 rounded-md`}
-          onClick={() => console.log('********************************')}
+          onClick={()=>{
+            setExchangeStatus('completed'); 
+          }}
           >Completed</button>
         </div>
         <CreateExchange />
