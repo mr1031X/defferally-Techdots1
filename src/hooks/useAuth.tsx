@@ -10,4 +10,17 @@ const useSignInUser = () => useMutation(signInUser);
 const signUpUser = (data: Register) => authService.signUp(data);
 const useSignUpUser = () => useMutation(signUpUser);
 
-export { useSignInUser, useSignUpUser };
+
+const login = async (apiResponse:any) => {
+    const responseData = apiResponse.data.data
+    const token = apiResponse.token
+    localStorage.setItem('user', JSON.stringify(apiResponse))
+    localStorage.setItem('user_id', `${responseData.user.id}`)
+    localStorage.setItem('access_token', token)
+  }
+  const logout = () => {
+    localStorage.removeItem('user')
+    localStorage.removeItem('user_id')
+    localStorage.removeItem('access_token')
+  }
+export { useSignInUser, useSignUpUser,login, logout };

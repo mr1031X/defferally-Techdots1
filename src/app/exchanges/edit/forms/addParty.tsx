@@ -5,17 +5,12 @@ import Input from '@/src/components/Input';
 import { useForm } from 'react-hook-form';
 import Select from '@/src/components/Selector';
 import Modal from '@/src/components/Modal';
+import { Role } from '@/src/mocks/common';
 
-const Role = [
-  { value: 1, label: 'Qualified intermediate' },
-  { value: 2, label: 'Bachelors' },
-  { value: 3, label: 'Masters' },
-];
 export default function AddParty({ onClose }: { onClose: () => void }) {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm();
   const [loading, setLoading] = useState<boolean>(false);
@@ -40,7 +35,6 @@ export default function AddParty({ onClose }: { onClose: () => void }) {
               label="Role"
               options={Role}
               setSelectedValueProp={handleCategoryChange}
-              // defaultValue={signUpData?.user?.experience}
               className="w-full cursor-pointer text-lg"
             />
           </div>

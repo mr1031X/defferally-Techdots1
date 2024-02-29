@@ -11,7 +11,7 @@ export default function Navbar() {
                 <Image
                     priority={true}
                     placeholder='empty'
-                    src="/white-logo.png"
+                    src="/logo.png"
                     alt="DeferAlly Logo"
                     width={70}
                     height={70}

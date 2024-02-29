@@ -1,6 +1,6 @@
 "use client"
 import SideNav from '@/src/app/ui/dashboard/sidenav';
-import TopNav from '../ui/dashboard/topnav';
+import TopNav from '../../app/ui/dashboard/topnav';
 import React, { useState } from 'react';
 
 interface LayoutProps {

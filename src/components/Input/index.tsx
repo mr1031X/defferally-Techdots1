@@ -32,10 +32,10 @@ export default function Input({
     title,
     style,
     register,
+    validationRules = { required: false },
     name,
     subTitle,
     useReactHookForm = true,
-    validationRules = { required: false },
     className,
     errors,
     ...props
@@ -69,7 +69,7 @@ export default function Input({
                 subTitle &&
                 <span className={`text-gray-400 text-xs ${subTitle ? 'mb-3' : ''}`}>{subTitle}</span>
             }
-            <div className='relatived'>
+            <div className='relative'>
             {type === 'textarea' ? (
           <textarea
             className={`${className ? className : ''} w-full ${
