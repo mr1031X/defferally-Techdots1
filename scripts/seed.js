@@ -1,3 +1,5 @@
+// Deprecated File
+
 const { db } = require('@vercel/postgres');
 const {
   invoices,
@@ -244,14 +246,6 @@ async function seedRevenue(client) {
 
 async function main() {
   const client = await db.connect();
-
-  // await seedUsers(client);
-  // await seedCustomers(client);
-  // await seedInvoices(client);
-  // await seedexchanges(client);
-  // await seedexchangeUser(client);
-  // await seedRevenue(client);
-
   await client.end();
 }
 

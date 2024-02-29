@@ -46,7 +46,6 @@ export interface IDocument {
 }
 
 export interface CreateExchange {
-  userId: number;
   type: PropertyType;
   parties: AddParty[];
   steps: AddStep[];
