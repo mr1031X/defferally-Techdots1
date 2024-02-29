@@ -20,35 +20,35 @@ For more information, see the [NextJS Tutorial](https://nextjs.org/learn/dashboa
 7. Navigate to [Login](http://localhost:3000/login)
 
 **Technologies Used**
-- Next.js:
+- **Next.js**:
 A React framework for building web applications with server-side rendering and other powerful features.
 
-- TypeScript:
+- **TypeScript**:
 A superset of JavaScript that adds static types to the language.
 
-- Prisma:
+- **Prisma**:
 An open-source database toolkit for TypeScript and Node.js that provides a query builder, ORM, and migration tool.
 
-- Vercel/Postgres:
+- **Vercel/Postgres**:
 A combination of Vercel for deployment and Postgres as the relational database, connected using the @vercel/postgres library.
 
-- JWT (JSON Web Tokens):
+- **JWT (JSON Web Tokens)**:
 A standard for securely transmitting information between parties as a JSON object.
 
-- Prisma Client:
+- **Prisma Client**:
 The auto-generated query builder and type-safe database client for TypeScript and Node.js.
 
-- Axios:
+- **Axios**:
 A promise-based HTTP client for making requests to APIs.
 
-- Tailwind CSS:
+- **Tailwind CSS**:
 A utility-first CSS framework that makes it easy to design responsive and visually consistent interfaces.
 
-- Redux Toolkit:
+- **Redux Toolkit**:
 A set of tools and guidelines for Redux, a predictable state container for JavaScript applications.
 
-- React-Query:
+- **React-Query**:
 A library for managing, caching, and synchronizing asynchronous and remote data in React applications.
 
-- React-Hook-Form:
+- **React-Hook-Form**:
 A library for managing forms in React with hooks.
