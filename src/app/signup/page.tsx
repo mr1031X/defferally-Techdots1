@@ -6,12 +6,11 @@ import Role from './SignUpSteps/userRole';
 import Loader from '@/src/components/Loader';
 import UserInfo from './SignUpSteps/userInfo';
 import UserPassword from './SignUpSteps/userPassword';
-import { IUserSignUpPayload } from '@/src/interfaces/user';
 
 export default function SignUp() {
   const [step, setStep] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const [form, setForm] = useState<IUserSignUpPayload>({});
+  const [form, setForm] = useState({});
 
   const onSubmit = async (data: object, step: number) => {
     console.log("====== data =========",data);

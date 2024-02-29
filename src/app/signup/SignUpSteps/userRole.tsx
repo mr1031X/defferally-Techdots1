@@ -3,7 +3,7 @@ import Radio from '@/src/components/Radio'
 import Button from '@/src/components/Buttons/button';
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
-import { UserRoleInputs } from "@/src/interfaces/user";
+import { UserRoleInputs } from "@/src/interfaces/request/user";
 import forwardArrow from '@/public/forwardArrow.svg'
 interface SignUpInfoProps {
     onSubmit: (data: object, step: number) => void;
