@@ -21,7 +21,7 @@ export default function Profile() {
   const [loading, setLoading] = useState<boolean>(false);
   const [, setShowPassword] = useState<boolean>(false);
   const [userData, setUserData] = useState<UpdateUser>(); // Initialize userData state
-  const [currentPass, setCurrentPass] = useState<string>(); // Initialize userData state
+  const [, setCurrentPass] = useState<string>(); // Initialize userData state
 
   const id = typeof window !== 'undefined' ? localStorage.getItem('user_id') || '' : '';
 const userId = parseInt(id, 10);
