@@ -70,7 +70,7 @@ export class UserService {
 
       return {
         user: user,
-        token: '',
+        token,
         message: 'User is successfully loggedIn',
       };
     } catch (error) {
