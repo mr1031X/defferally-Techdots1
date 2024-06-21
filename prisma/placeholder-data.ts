@@ -7,8 +7,8 @@ export const users = [
     name: 'Wilkinson Egwu',
     phone: '615-354-1234',
     company: '1031X',
-    role: UserRole.QI,
-    email: 'wilkinson@deferally.ai',
+    role: UserRole.ADMIN,
+    email: 'wilkinson@deferally.com',
     password: '123456',
   },
   {
@@ -17,8 +17,8 @@ export const users = [
     name: 'Chris Smalley',
     phone: '615-354-1234',
     company: '1031X',
-    role: UserRole.QI,
-    email: 'chris@deferally.ai',
+    role: UserRole.ADMIN,
+    email: 'chris@deferally.com',
     password: '123456',
   },
   {
@@ -28,7 +28,7 @@ export const users = [
     phone: '615-354-1234',
     company: '1031X',
     role: UserRole.QI,
-    email: 'garrett@deferally.ai',
+    email: 'garrett@deferally.com',
     password: '123456',
   },
   {
